@@ -20,34 +20,37 @@ public class ArrayUtilities {
     }
 
     public static int[] removeDuplicate(int[] values) {
-        if (values.length < 1)
+        if (values.length < 2)
             return values;
 
         int k = 0;
-        int i = 0;
+        int i = 1;
 
         while(i<values.length){
             if(values[i] == values[k]){
                 i++;
             }else {
-                k++;
-                values[i]=values[k];
+                ++k;
+                values[k]=values[i];
                 i++;
             }
         }
 
         int[] newValues = Arrays.copyOf(values, k+1);
+        for(int s = 0; s <newValues.length; s++){
+            newValues[k]=values[s];
+        }
 
         return newValues;
 
     }
 
     public static double mean(int[] values) {
-        int sum = 0;
+        double sum = 0;
         for(int i = 0; i < values.length; i++){
             sum += values[i];
         }
-        return (double)sum/values.length;
+        return sum/values.length;
     }
 
 
